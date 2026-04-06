@@ -84,14 +84,21 @@
 
         <section class="slider-section container">
             <h2>Galeria de Imagens</h2>
-            <div class="slider">
+            <div class="slider" tabindex="0" aria-label="Carrossel de imagens">
                 <div class="slider-wrapper" id="slider-wrapper">
                     <div class="slide"><img src="./assets/images/1.png" alt="Slide 1"></div>
                     <div class="slide"><img src="./assets/images/2.jpg" alt="Slide 2"></div>
                     <div class="slide"><img src="./assets/images/3.jpg" alt="Slide 3"></div>
                 </div>
-                <button class="slider-btn prev" id="prevBtn">&lt;</button>
-                <button class="slider-btn next" id="nextBtn">&gt;</button>
+                <div class="slider-controls">
+                    <button class="slider-btn slider-btn-prev" id="prevBtn" type="button" aria-label="Slide anterior">&lt;</button>
+                    <div class="slider-dots" id="slider-dots" role="tablist" aria-label="Navegacao dos slides">
+                        <button class="slider-dot is-active" type="button" data-slide="0" aria-label="Ir para slide 1" aria-current="true"></button>
+                        <button class="slider-dot" type="button" data-slide="1" aria-label="Ir para slide 2" aria-current="false"></button>
+                        <button class="slider-dot" type="button" data-slide="2" aria-label="Ir para slide 3" aria-current="false"></button>
+                    </div>
+                    <button class="slider-btn slider-btn-next" id="nextBtn" type="button" aria-label="Proximo slide">&gt;</button>
+                </div>
             </div>
         </section>
 
@@ -165,5 +172,6 @@
             <p>&copy; 2026 dot.lib - Teste de Frontend</p>
         </div>
     </footer>
+    <script src="./script.js"></script>
 </body>
 </html>
