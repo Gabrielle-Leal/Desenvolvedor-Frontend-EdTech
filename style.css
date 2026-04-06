@@ -475,11 +475,12 @@ h2 {
 
 /* Slider Section */
 .slider {
-    position: relative;
-    max-width: 800px;
+    max-width: 1020px;
     margin: 0 auto;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 14px;
+    background: #ffffff;
+    border: 1px solid #dfdfdf;
 }
 
 .slider-wrapper {
@@ -493,28 +494,74 @@ h2 {
 
 .slide img {
     width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
     display: block;
 }
 
+.slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 18px 20px;
+    background: #f4f4f4;
+}
+
 .slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    padding: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    border: 1px solid #d9dce2;
+    background: #f4f4f4;
+    color: #111111;
+    font-size: 28px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
     cursor: pointer;
-    z-index: 10;
-    border-radius: 50%;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 .slider-btn:hover {
-    background: var(--primary-color);
+    border-color: #111111;
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.slider-btn-next {
+    background: #1f2937;
+    color: #ffffff;
+    border-color: #1f2937;
+}
+
+.slider-btn-next:hover {
+    background: #111827;
+    border-color: #111827;
+}
+
+.slider-dots {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.slider-dot.is-active {
+    background: #111111;
+    transform: scale(1.12);
+}
+
+.slider-dot:hover {
+    background: #6b7280;
+}
 
 /* Audio Section */
 .audio-player {
@@ -743,6 +790,11 @@ textarea {
     .media-stage-text {
         font-size: 18px;
     }
+
+    .slider-controls {
+        gap: 18px;
+        padding: 18px 14px;
+    }
     
     .activities {
         grid-template-columns: 1fr;
@@ -793,5 +845,15 @@ textarea {
     .media-stage-text {
         font-size: 15px;
         line-height: 1.6;
+    }
+
+    .slider-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 24px;
+    }
+
+    .slider-controls {
+        gap: 14px;
     }
 }
