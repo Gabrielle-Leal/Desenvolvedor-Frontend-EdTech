@@ -1,4 +1,98 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Audio Stage ---
+    const audio = document.getElementById('audio-player');
+    const audioPlayBtn = document.getElementById('audio-play');
+    const audioProgress = document.getElementById('audio-progress');
+    const audioTime = document.getElementById('audio-time');
+    const audioVolume = document.getElementById('audio-volume');
+    const audioMuteBtn = document.getElementById('audio-mute');
+
+    function formatAudioTime(seconds) {
+        if (!Number.isFinite(seconds)) {
+            return '00:00';
+        }
+
+        const totalSeconds = Math.max(0, Math.floor(seconds));
+        const minutes = Math.floor(totalSeconds / 60);
+        const remainingSeconds = totalSeconds % 60;
+        return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    }
+
+    function setRangeFill(rangeEl, value, maxValue) {
+        const safeMax = Number(maxValue) || 100;
+        const percent = Math.min(100, Math.max(0, (Number(value) / safeMax) * 100));
+        rangeEl.style.setProperty('--track-fill', `${percent}%`);
+    }
+
+    if (audio && audioPlayBtn && audioProgress && audioTime && audioVolume && audioMuteBtn) {
+        audio.volume = Number(audioVolume.value) / 100;
+        setRangeFill(audioVolume, audioVolume.value, audioVolume.max);
+
+        audioPlayBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                return;
+            }
+
+            audio.pause();
+        });
+
+        audio.addEventListener('play', () => {
+            audioPlayBtn.classList.add('is-playing');
+            audioPlayBtn.setAttribute('aria-label', 'Pausar áudio');
+        });
+
+        audio.addEventListener('pause', () => {
+            audioPlayBtn.classList.remove('is-playing');
+            audioPlayBtn.setAttribute('aria-label', 'Reproduzir áudio');
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            const duration = audio.duration || 0;
+            const progress = duration > 0 ? (audio.currentTime / duration) * 100 : 0;
+            audioProgress.value = String(progress);
+            setRangeFill(audioProgress, audioProgress.value, audioProgress.max);
+            audioTime.textContent = formatAudioTime(audio.currentTime);
+        });
+
+        audio.addEventListener('loadedmetadata', () => {
+            audioTime.textContent = formatAudioTime(0);
+        });
+
+        audioProgress.addEventListener('input', () => {
+            const duration = audio.duration || 0;
+            const nextTime = duration * (Number(audioProgress.value) / 100);
+            audio.currentTime = Number.isFinite(nextTime) ? nextTime : 0;
+            setRangeFill(audioProgress, audioProgress.value, audioProgress.max);
+        });
+
+        audioVolume.addEventListener('input', () => {
+            const volumeLevel = Number(audioVolume.value) / 100;
+            audio.volume = volumeLevel;
+            audio.muted = volumeLevel === 0;
+            setRangeFill(audioVolume, audioVolume.value, audioVolume.max);
+            audioMuteBtn.setAttribute('aria-label', audio.muted ? 'Ativar áudio' : 'Silenciar áudio');
+            audioMuteBtn.querySelector('span').innerHTML = audio.muted ? '&#128263;' : '&#128266;';
+        });
+
+        audioMuteBtn.addEventListener('click', () => {
+            audio.muted = !audio.muted;
+            audioMuteBtn.setAttribute('aria-label', audio.muted ? 'Ativar áudio' : 'Silenciar áudio');
+            audioMuteBtn.querySelector('span').innerHTML = audio.muted ? '&#128263;' : '&#128266;';
+
+            if (!audio.muted && Number(audioVolume.value) === 0) {
+                audioVolume.value = '70';
+                audio.volume = 0.7;
+            }
+
+            if (audio.muted) {
+                audio.volume = 0;
+            }
+
+            setRangeFill(audioVolume, audioVolume.value, audioVolume.max);
+        });
+    }
+
     // --- Slider ---
     const sliderWrapper = document.getElementById('slider-wrapper');
     const prevBtn = document.getElementById('prevBtn');
@@ -69,6 +163,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnRespondDiscursive = document.getElementById('btn-respond-discursive');
     const btnEditDiscursive = document.getElementById('btn-edit-discursive');
     const feedbackDiscursive = document.getElementById('feedback-discursive');
+    const feedbackDiscursiveClose = feedbackDiscursive ? feedbackDiscursive.querySelector('.feedback-close') : null;
+
+    function updateDiscursiveButtonState() {
+        if (discursiveTextarea.disabled) {
+            return;
+        }
+
+        btnRespondDiscursive.disabled = discursiveTextarea.value.trim().length === 0;
+    }
 
     function saveDiscursive() {
         const response = discursiveTextarea.value;
@@ -83,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function editDiscursive() {
         discursiveTextarea.disabled = false;
-        btnRespondDiscursive.disabled = false;
+        updateDiscursiveButtonState();
         btnEditDiscursive.disabled = true;
         feedbackDiscursive.classList.add('hidden');
         sessionStorage.setItem('discursive_status', 'editing');
@@ -91,15 +194,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btnRespondDiscursive.addEventListener('click', saveDiscursive);
     btnEditDiscursive.addEventListener('click', editDiscursive);
+    discursiveTextarea.addEventListener('input', updateDiscursiveButtonState);
+
+    if (feedbackDiscursiveClose) {
+        feedbackDiscursiveClose.addEventListener('click', () => {
+            feedbackDiscursive.classList.add('hidden');
+        });
+    }
 
     // --- Atividade Objetiva ---
     const objectiveCheckboxes = document.querySelectorAll('input[name="objective"]');
     const btnRespondObjective = document.getElementById('btn-respond-objective');
     const btnEditObjective = document.getElementById('btn-edit-objective');
     const feedbackObjective = document.getElementById('feedback-objective');
+    const feedbackObjectiveClose = feedbackObjective ? feedbackObjective.querySelector('.feedback-close') : null;
 
     objectiveCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                objectiveCheckboxes.forEach(cb => {
+                    if (cb !== checkbox) {
+                        cb.checked = false;
+                        cb.parentElement.classList.remove('selected');
+                    }
+                });
+            }
+
             const anyChecked = Array.from(objectiveCheckboxes).some(cb => cb.checked);
             btnRespondObjective.disabled = !anyChecked;
             
@@ -133,6 +253,12 @@ document.addEventListener('DOMContentLoaded', () => {
     btnRespondObjective.addEventListener('click', saveObjective);
     btnEditObjective.addEventListener('click', editObjective);
 
+    if (feedbackObjectiveClose) {
+        feedbackObjectiveClose.addEventListener('click', () => {
+            feedbackObjective.classList.add('hidden');
+        });
+    }
+
     // --- Restore Session Data ---
     function restoreSession() {
         // Discursive
@@ -146,6 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
             btnRespondDiscursive.disabled = true;
             btnEditDiscursive.disabled = false;
             feedbackDiscursive.classList.remove('hidden');
+        } else {
+            updateDiscursiveButtonState();
         }
 
         // Objective

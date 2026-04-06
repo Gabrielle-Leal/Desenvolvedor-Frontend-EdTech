@@ -102,50 +102,112 @@
             </div>
         </section>
 
+        <section class="content-stage container" aria-labelledby="content-stage-title">
+            <div class="content-stage-panel">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore nihil corporis suscipit soluta dolorem id consectetur, tenetur nesciunt ducimus maiores sequi veritatis nostrum, esse eaque delectus ea laboriosam repellendus! Ipsum nobis, mollitia facilis praesentium cupiditate quidem eaque itaque nulla ab obcaecati sapiente sequi porro, totam, non molestias excepturi explicabo adipisci deleniti architecto animi!</p>
+            </div>
+
+            <div class="content-stage-grid" aria-label="Conteudos em destaque">
+                <article class="content-stage-card content-stage-card-side" aria-label="Conteudo complementar 1">
+                    <span class="content-stage-card-icon" aria-hidden="true">?</span>
+                    <button class="content-stage-card-action" type="button">Abrir</button>
+                </article>
+
+                <article class="content-stage-card content-stage-card-active" aria-label="Conteudo principal">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe excepturi, dolores perspiciatis commodi eum dolore nesciunt tempore similique at quas.</p>
+                    <button class="content-stage-card-action" type="button">Fechar</button>
+                </article>
+
+                <article class="content-stage-card content-stage-card-side" aria-label="Conteudo complementar 2">
+                    <span class="content-stage-card-icon" aria-hidden="true">?</span>
+                    <button class="content-stage-card-action" type="button">Abrir</button>
+                </article>
+            </div>
+
+            <div class="content-stage-copy">
+                <h2 id="content-stage-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit</h2>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+            </div>
+        </section>
+
         <section class="audio-section container">
             <h2>Player de Áudio</h2>
-            <div class="audio-player">
-                <audio controls id="audio-player">
+            <div class="audio-player" data-audio-stage>
+                <audio id="audio-player" preload="metadata">
                     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
                     Seu navegador não suporta o elemento de áudio.
                 </audio>
+                <button class="audio-btn audio-play" id="audio-play" type="button" aria-label="Reproduzir áudio">
+                    <span class="audio-icon-play" aria-hidden="true"></span>
+                </button>
+                <div class="audio-progress-wrap">
+                    <input class="audio-range audio-progress" id="audio-progress" type="range" min="0" max="100" value="0" aria-label="Progresso do áudio">
+                </div>
+                <span class="audio-time" id="audio-time" aria-live="polite">00:00</span>
+                <button class="audio-btn audio-volume-icon" id="audio-mute" type="button" aria-label="Silenciar áudio">
+                    <span aria-hidden="true">&#128266;</span>
+                </button>
+                <div class="audio-volume-wrap">
+                    <input class="audio-range audio-volume" id="audio-volume" type="range" min="0" max="100" value="70" aria-label="Volume">
+                </div>
+                <button class="audio-btn audio-settings" type="button" aria-label="Configurações de áudio">
+                    <span aria-hidden="true">&#9881;</span>
+                </button>
             </div>
         </section>
 
         <section class="activities container">
             <div class="activity-card" id="activity-discursive">
-                <h3>Atividade Discursiva</h3>
-                <p>Escreva sua resposta sobre o tema abordado:</p>
+                <div class="activity-head">
+                    <span class="activity-icon" aria-hidden="true">&#9998;</span>
+                    <h3>Atividade discursiva</h3>
+                </div>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                 <textarea id="discursive-response" placeholder="Digite sua resposta aqui..."></textarea>
                 <div class="activity-actions">
-                    <button id="btn-respond-discursive" class="btn btn-primary">Responder</button>
+                    <button id="btn-respond-discursive" class="btn btn-primary" disabled>Responder</button>
                     <button id="btn-edit-discursive" class="btn btn-secondary" disabled>Alterar</button>
                 </div>
-                <div id="feedback-discursive" class="feedback hidden">Resposta enviada com sucesso!</div>
+                <div id="feedback-discursive" class="feedback hidden">
+                    <button class="feedback-close" type="button" aria-label="Fechar feedback">&times;</button>
+                    <strong>&Eacute; isso a&iacute;!</strong>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur commodi odio maiores accusamus aspernatur consequatur ipsam dignissimos magnam hic, velit est perferendis explicabo aperiam ratione veritatis labore.</p>
+                </div>
             </div>
 
             <div class="activity-card" id="activity-objective">
-                <h3>Atividade Objetiva</h3>
-                <p>Qual a principal vantagem da tecnologia na educação?</p>
+                <div class="activity-head">
+                    <span class="activity-icon" aria-hidden="true">&#10067;</span>
+                    <h3>Atividade Objetiva</h3>
+                </div>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page.</p>
                 <div class="options">
                     <label class="option-item">
                         <input type="checkbox" name="objective" value="1">
-                        <span>Acesso rápido à informação</span>
+                        <span>A) Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
                     </label>
                     <label class="option-item">
                         <input type="checkbox" name="objective" value="2">
-                        <span>Personalização do ensino</span>
+                        <span>B) Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
                     </label>
                     <label class="option-item">
                         <input type="checkbox" name="objective" value="3">
-                        <span>Engajamento dos alunos</span>
+                        <span>C) Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" name="objective" value="4">
+                        <span>D) Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
                     </label>
                 </div>
                 <div class="activity-actions">
                     <button id="btn-respond-objective" class="btn btn-primary" disabled>Responder</button>
                     <button id="btn-edit-objective" class="btn btn-secondary" disabled>Alterar</button>
                 </div>
-                <div id="feedback-objective" class="feedback hidden">Opção salva com sucesso!</div>
+                <div id="feedback-objective" class="feedback feedback-warning hidden">
+                    <button class="feedback-close" type="button" aria-label="Fechar feedback">&times;</button>
+                    <strong>Tente novamente!</strong>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur commodi odio maiores accusamus aspernatur consequatur ipsam dignissimos magnam hic, velit est perferendis explicabo aperiam ratione veritatis labore.</p>
+                </div>
             </div>
         </section>
 

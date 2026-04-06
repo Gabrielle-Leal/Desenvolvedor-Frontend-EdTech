@@ -563,93 +563,439 @@ h2 {
     background: #6b7280;
 }
 
+/* Content Stage */
+.content-stage {
+    padding-top: 20px;
+}
+
+.content-stage-panel {
+    max-width: 920px;
+    margin: 0 auto 40px;
+    padding: 28px 34px;
+    border-radius: 8px;
+    background: #1a1a1a;
+    color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.14);
+}
+
+.content-stage-panel p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.content-stage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 12px;
+    max-width: 1120px;
+    margin: 0 auto 52px;
+}
+
+.content-stage-card {
+    min-height: 255px;
+    border-radius: 8px;
+    border: 1px solid #ececec;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 26px;
+}
+
+.content-stage-card-side {
+    background: #ffffff;
+    color: #111827;
+}
+
+.content-stage-card-active {
+    background: #111111;
+    border-color: #111111;
+    color: rgba(255, 255, 255, 0.9);
+    transform: translateY(10px);
+    z-index: 1;
+}
+
+.content-stage-card-active p {
+    max-width: 190px;
+    text-align: center;
+    line-height: 1.85;
+    font-size: 16px;
+}
+
+.content-stage-card-icon {
+    display: grid;
+    place-items: center;
+    flex: 1;
+    width: 100%;
+    font-size: 44px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.content-stage-card-action {
+    min-width: 92px;
+    padding: 11px 18px;
+    border-radius: 4px;
+    border: 1px solid #d9dce2;
+    background: #ffffff;
+    color: #374151;
+    font: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.content-stage-card-action:hover {
+    border-color: #111111;
+    color: #111111;
+}
+
+.content-stage-card-active .content-stage-card-action {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.24);
+}
+
+.content-stage-card-active .content-stage-card-action:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #ffffff;
+}
+
+.content-stage-copy {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.content-stage-copy h2 {
+    margin-bottom: 18px;
+    text-align: left;
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+    font-weight: 800;
+}
+
+.content-stage-copy p {
+    max-width: 780px;
+    font-size: 22px;
+    line-height: 1.6;
+    color: #7f8b6f;
+}
+
 /* Audio Section */
 .audio-player {
-    max-width: 600px;
+    max-width: 1120px;
     margin: 0 auto;
-    background: var(--light-gray);
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
+    background: #ffffff;
+    border: 1px solid #dde2e8;
+    border-radius: 10px;
+    min-height: 56px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
 .audio-player audio {
+    display: none;
+}
+
+.audio-btn {
+    border: none;
+    background: transparent;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #505862;
+    cursor: pointer;
+}
+
+.audio-play {
+    width: 22px;
+    flex-shrink: 0;
+}
+
+.audio-icon-play {
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 8px solid #59616d;
+}
+
+.audio-play.is-playing .audio-icon-play {
+    width: 8px;
+    height: 10px;
+    border: none;
+    border-left: 3px solid #59616d;
+    border-right: 3px solid #59616d;
+}
+
+.audio-progress-wrap {
+    flex: 1;
+}
+
+.audio-range {
     width: 100%;
+    appearance: none;
+    height: 4px;
+    border-radius: 999px;
+    outline: none;
+    background: #d9dde2;
+}
+
+.audio-range::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 999px;
+    background: transparent;
+}
+
+.audio-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #f7f8fb;
+    border: 1px solid #ccd3dc;
+    box-shadow: 0 1px 2px rgba(17, 24, 39, 0.2);
+    margin-top: -5px;
+    cursor: pointer;
+}
+
+.audio-range::-moz-range-track {
+    height: 4px;
+    border-radius: 999px;
+    background: transparent;
+}
+
+.audio-range::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #f7f8fb;
+    border: 1px solid #ccd3dc;
+    box-shadow: 0 1px 2px rgba(17, 24, 39, 0.2);
+    cursor: pointer;
+}
+
+.audio-progress {
+    --track-fill: 0%;
+    background: linear-gradient(to right, #87ca1f 0%, #87ca1f var(--track-fill), #d9dde2 var(--track-fill), #d9dde2 100%);
+}
+
+.audio-volume {
+    --track-fill: 70%;
+    background: linear-gradient(to right, #1d2430 0%, #1d2430 var(--track-fill), #d9dde2 var(--track-fill), #d9dde2 100%);
+}
+
+.audio-time {
+    min-width: 46px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #858c97;
+    letter-spacing: 0.03em;
+}
+
+.audio-volume-wrap {
+    width: 52px;
+}
+
+.audio-volume-icon,
+.audio-settings {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.audio-settings {
+    width: 20px;
 }
 
 /* Activity Cards */
 .activities {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: 1fr;
+    gap: 38px;
 }
 
 .activity-card {
-    background: var(--white);
-    border: 1px solid var(--border-color);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    background: #ffffff;
+    border: 1px solid #dfe4ea;
+    padding: 30px 28px 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 7px rgba(17, 24, 39, 0.04);
 }
 
 .activity-card h3 {
-    margin-bottom: 20px;
-    color: var(--dark-bg);
+    margin: 0;
+    color: #1f2937;
+    font-size: 34px;
+    line-height: 1;
+    letter-spacing: -0.01em;
 }
 
 .activity-card p {
-    margin-bottom: 20px;
-    color: var(--gray-text);
+    margin: 14px 0 16px;
+    color: #62707e;
+    font-size: 32px;
+    line-height: 1.45;
+    max-width: 1080px;
+}
+
+.activity-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.activity-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #eaf4da;
+    color: #86c91c;
+    display: inline-grid;
+    place-items: center;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 textarea {
     width: 100%;
-    height: 150px;
-    padding: 15px;
-    border: 1px solid var(--border-color);
+    height: 190px;
+    padding: 16px;
+    border: 1px solid #d6dce3;
     border-radius: 6px;
     margin-bottom: 20px;
     font-family: inherit;
+    font-size: 14px;
+    color: #334155;
     resize: none;
 }
 
+.activity-card textarea::placeholder {
+    color: #9aa4b2;
+}
+
 .options {
-    margin-bottom: 20px;
+    margin: 16px 0 22px;
 }
 
 .option-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    margin-bottom: 10px;
+    gap: 12px;
+    padding: 13px 14px;
+    border: 1px solid #d6dce3;
+    border-radius: 4px;
+    margin-bottom: 12px;
     cursor: pointer;
     transition: var(--transition);
+    color: #334155;
+    font-weight: 500;
 }
 
 .option-item:hover {
-    background-color: var(--light-gray);
+    border-color: #bfc8d2;
 }
 
 .option-item.selected {
-    border-color: var(--primary-color);
-    background-color: rgba(134, 201, 28, 0.1);
+    border-color: #111111;
+    background-color: #111111;
+    color: #f8fafc;
+}
+
+.option-item input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: #111111;
+}
+
+.option-item.selected input {
+    accent-color: #ffffff;
+}
+
+.option-item.selected span {
+    color: #ffffff;
 }
 
 .activity-actions {
     display: flex;
-    gap: 10px;
+    gap: 12px;
 }
 
 .feedback {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #d4edda;
-    color: #155724;
-    border-radius: 6px;
-    font-weight: 600;
+    margin-top: 18px;
+    padding: 16px 18px;
+    background-color: #dbf2e2;
+    color: #1a6132;
+    border-radius: 4px;
+    position: relative;
+}
+
+.feedback strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.feedback p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #2c7a46;
+}
+
+.feedback-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    color: #2c7a46;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.feedback-warning {
+    background: #efe8b6;
+    color: #6f4c0f;
+}
+
+.feedback-warning .feedback-close {
+    color: #8a5b17;
+}
+
+.feedback-warning p {
+    color: #7c5a1f;
+}
+
+.activity-actions .btn {
+    min-width: 108px;
+    min-height: 42px;
+    padding: 10px 18px;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+.activity-actions .btn-primary:disabled,
+.activity-actions .btn-secondary:disabled {
+    background: #edf1f5;
+    color: #a4afbb;
+}
+
+.activity-actions .btn-secondary {
+    background: #111111;
+    color: #ffffff;
+}
+
+.activity-actions .btn-secondary:hover:not(:disabled) {
+    background: #000000;
 }
 
 .hidden {
@@ -795,9 +1141,35 @@ textarea {
         gap: 18px;
         padding: 18px 14px;
     }
-    
-    .activities {
+
+    .content-stage-panel {
+        padding: 24px;
+    }
+
+    .content-stage-grid {
         grid-template-columns: 1fr;
+        max-width: 440px;
+        gap: 18px;
+    }
+
+    .content-stage-card-active {
+        transform: none;
+    }
+
+    .content-stage-copy h2 {
+        font-size: 40px;
+    }
+
+    .content-stage-copy p {
+        font-size: 18px;
+    }
+    
+    .activity-card h3 {
+        font-size: 28px;
+    }
+
+    .activity-card p {
+        font-size: 22px;
     }
 }
 
@@ -855,5 +1227,74 @@ textarea {
 
     .slider-controls {
         gap: 14px;
+    }
+
+    .content-stage {
+        padding-top: 6px;
+    }
+
+    .content-stage-panel {
+        margin-bottom: 26px;
+        padding: 22px 18px;
+    }
+
+    .content-stage-panel p {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    .content-stage-grid {
+        margin-bottom: 34px;
+    }
+
+    .content-stage-card {
+        min-height: 220px;
+    }
+
+    .content-stage-copy h2 {
+        font-size: 34px;
+    }
+
+    .content-stage-copy p {
+        font-size: 16px;
+    }
+
+    .activity-card {
+        padding: 22px 16px 18px;
+    }
+
+    .activity-card h3 {
+        font-size: 22px;
+    }
+
+    .activity-card p {
+        font-size: 16px;
+        margin-top: 12px;
+    }
+
+    textarea {
+        height: 150px;
+    }
+
+    .option-item {
+        font-size: 14px;
+    }
+
+    .activity-actions {
+        flex-wrap: wrap;
+    }
+
+    .audio-player {
+        gap: 8px;
+        padding: 8px 10px;
+    }
+
+    .audio-time {
+        min-width: 40px;
+        font-size: 11px;
+    }
+
+    .audio-volume-wrap {
+        width: 38px;
     }
 }
