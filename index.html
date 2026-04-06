@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EdTech - Teste de Frontend</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
@@ -17,14 +18,46 @@
 
      <main>
         <section class="hero">
+            <span class="hero-glow"></span>
+            <span class="hero-line line-one"></span>
+            <span class="hero-line line-two"></span>
+            <span class="hero-line line-three"></span>
+            <span class="hero-orb orb-one"></span>
+            <span class="hero-orb orb-two"></span>
             <div class="container hero-container">
                 <div class="hero-content">
-                    <h1>Lorem ipsum dolor, sit amet</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <button class="btn btn-primary">Começar agora</button>
+                    <span class="hero-kicker"></span>
+                    <h1>Lorem ipsum<br>dolor, sit <span>amet</span></h1>
+                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    <button class="btn hero-cta">Lorem Ipsum <span aria-hidden="true">&#8594;</span></button>
                 </div>
-                <div class="hero-image">
-                    <img src="https://via.placeholder.com/600x400" alt="Dashboard Preview" id="hero-img">
+                <div class="hero-image" aria-hidden="true">
+                    <div class="hero-window">
+                        <div class="window-top">
+                            <div class="window-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <span class="window-pill"></span>
+                        </div>
+                        <div class="window-body">
+                            <aside class="window-sidebar">
+                                <span></span>
+                                <span></span>
+                                <button class="side-btn"></button>
+                            </aside>
+                            <div class="window-main">
+                                <div class="chart-panel">
+                                    <svg viewBox="0 0 320 120" preserveAspectRatio="none" role="presentation" focusable="false">
+                                        <polyline points="0,95 35,78 65,86 100,58 130,64 165,40 198,50 230,28 265,38 292,58 320,22"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="card-row">
+                                    <div class="data-card"></div>
+                                    <div class="data-card"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -32,7 +65,20 @@
         <section class="video-section container">
             <h2>Assista ao Vídeo</h2>
             <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <img src="./assets/images/yt.png" alt="Thumbnail do vídeo no YouTube">
+                <button class="video-play" type="button" aria-label="Reproduzir vídeo">
+                    <span class="video-play-icon"></span>
+                </button>
+            </div>
+        </section>
+        
+        <section class="media-stage container">
+            <div class="media-stage-card">
+                <img src="./assets/images/mar.png" alt="Onda do mar" class="media-stage-image">
+                <div class="media-stage-text">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit voluptatum voluptatibus aperiam cum quasi repudiandae nostrum, sed amet quam maiores eum consectetur ipsa dolores quis ducimus, iusto dicta consequuntur facere!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quia! Cumque ipsum harum fuga perferendis autem incidunt dolorem voluptatum illo, quis explicabo. Possimus repudiandae dolore architecto, hic dolorum ab.</p>
+                </div>
             </div>
         </section>
 
@@ -40,7 +86,7 @@
             <h2>Galeria de Imagens</h2>
             <div class="slider">
                 <div class="slider-wrapper" id="slider-wrapper">
-                    <div class="slide"><img src="./assets/images/1.jpg" alt="Slide 1"></div>
+                    <div class="slide"><img src="./assets/images/1.png" alt="Slide 1"></div>
                     <div class="slide"><img src="./assets/images/2.jpg" alt="Slide 2"></div>
                     <div class="slide"><img src="./assets/images/3.jpg" alt="Slide 3"></div>
                 </div>
