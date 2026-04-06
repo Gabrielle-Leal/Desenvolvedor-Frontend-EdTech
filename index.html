@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
@@ -63,7 +63,10 @@
         </section>
 
         <section class="video-section container">
-            <h2>Assista ao Vídeo</h2>
+            <div class="video-header">
+                <h2 class="video-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit</h2>
+                <p class="video-subtitle">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+            </div>
             <div class="video-container">
                 <img src="./assets/images/yt.png" alt="Thumbnail do vídeo no YouTube">
                 <button class="video-play" type="button" aria-label="Reproduzir vídeo">
@@ -131,7 +134,6 @@
         </section>
 
         <section class="audio-section container">
-            <h2>Player de Áudio</h2>
             <div class="audio-player" data-audio-stage>
                 <audio id="audio-player" preload="metadata">
                     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -145,13 +147,22 @@
                 </div>
                 <span class="audio-time" id="audio-time" aria-live="polite">00:00</span>
                 <button class="audio-btn audio-volume-icon" id="audio-mute" type="button" aria-label="Silenciar áudio">
-                    <span aria-hidden="true">&#128266;</span>
+                    <span class="audio-icon" id="audio-mute-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                            <path d="M3 9V15H7L12 20V4L7 9H3Z" fill="currentColor"></path>
+                            <path d="M15 9.2C16.4 10.2 17.2 11.9 17.2 13.6C17.2 15.3 16.4 17 15 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path>
+                        </svg>
+                    </span>
                 </button>
                 <div class="audio-volume-wrap">
                     <input class="audio-range audio-volume" id="audio-volume" type="range" min="0" max="100" value="70" aria-label="Volume">
                 </div>
                 <button class="audio-btn audio-settings" type="button" aria-label="Configurações de áudio">
-                    <span aria-hidden="true">&#9881;</span>
+                    <span class="audio-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                            <path d="M19.5 13.5V10.5L17.6 10.1C17.4 9.5 17.1 8.9 16.8 8.4L17.9 6.8L15.8 4.7L14.2 5.8C13.7 5.5 13.1 5.2 12.5 5L12.1 3H9.1L8.7 5C8.1 5.2 7.5 5.5 7 5.8L5.4 4.7L3.3 6.8L4.4 8.4C4.1 8.9 3.8 9.5 3.6 10.1L1.7 10.5V13.5L3.6 13.9C3.8 14.5 4.1 15.1 4.4 15.6L3.3 17.2L5.4 19.3L7 18.2C7.5 18.5 8.1 18.8 8.7 19L9.1 21H12.1L12.5 19C13.1 18.8 13.7 18.5 14.2 18.2L15.8 19.3L17.9 17.2L16.8 15.6C17.1 15.1 17.4 14.5 17.6 13.9L19.5 13.5ZM10.6 15.5C8.9 15.5 7.5 14.1 7.5 12.4C7.5 10.7 8.9 9.3 10.6 9.3C12.3 9.3 13.7 10.7 13.7 12.4C13.7 14.1 12.3 15.5 10.6 15.5Z" fill="currentColor"></path>
+                        </svg>
+                    </span>
                 </button>
             </div>
         </section>
@@ -159,7 +170,12 @@
         <section class="activities container">
             <div class="activity-card" id="activity-discursive">
                 <div class="activity-head">
-                    <span class="activity-icon" aria-hidden="true">&#9998;</span>
+                    <span class="activity-icon activity-icon-objective" aria-hidden="true">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="20" fill="#76B900" fill-opacity="0.1"/>
+                            <path d="M11 22V20H18V22H11ZM11 18V16H22V18H11ZM11 14V12H22V14H11ZM20 28V24.925L25.525 19.425C25.675 19.275 25.8417 19.1667 26.025 19.1C26.2083 19.0333 26.3917 19 26.575 19C26.775 19 26.9667 19.0375 27.15 19.1125C27.3333 19.1875 27.5 19.3 27.65 19.45L28.575 20.375C28.7083 20.525 28.8125 20.6917 28.8875 20.875C28.9625 21.0583 29 21.2417 29 21.425C29 21.6083 28.9667 21.7958 28.9 21.9875C28.8333 22.1792 28.725 22.35 28.575 22.5L23.075 28H20ZM26.575 22.4L27.5 21.425L26.575 20.5L25.625 21.45L26.575 22.4Z" fill="#76B900"/>
+                        </svg>
+                    </span>
                     <h3>Atividade discursiva</h3>
                 </div>
                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
@@ -177,7 +193,12 @@
 
             <div class="activity-card" id="activity-objective">
                 <div class="activity-head">
-                    <span class="activity-icon" aria-hidden="true">&#10067;</span>
+                    <span class="activity-icon activity-icon-objective" aria-hidden="true">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="20" fill="#76B900" fill-opacity="0.1"/>
+                            <path d="M22 23C22.2833 23 22.5292 22.8958 22.7375 22.6875C22.9458 22.4792 23.05 22.2333 23.05 21.95C23.05 21.6667 22.9458 21.4208 22.7375 21.2125C22.5292 21.0042 22.2833 20.9 22 20.9C21.7167 20.9 21.4708 21.0042 21.2625 21.2125C21.0542 21.4208 20.95 21.6667 20.95 21.95C20.95 22.2333 21.0542 22.4792 21.2625 22.6875C21.4708 22.8958 21.7167 23 22 23ZM21.25 19.8H22.75C22.75 19.3167 22.8 18.9625 22.9 18.7375C23 18.5125 23.2333 18.2167 23.6 17.85C24.1 17.35 24.4333 16.9458 24.6 16.6375C24.7667 16.3292 24.85 15.9667 24.85 15.55C24.85 14.8 24.5875 14.1875 24.0625 13.7125C23.5375 13.2375 22.85 13 22 13C21.3167 13 20.7208 13.1917 20.2125 13.575C19.7042 13.9583 19.35 14.4667 19.15 15.1L20.5 15.65C20.65 15.2333 20.8542 14.9208 21.1125 14.7125C21.3708 14.5042 21.6667 14.4 22 14.4C22.4 14.4 22.725 14.5125 22.975 14.7375C23.225 14.9625 23.35 15.2667 23.35 15.65C23.35 15.8833 23.2833 16.1042 23.15 16.3125C23.0167 16.5208 22.7833 16.7833 22.45 17.1C21.9 17.5833 21.5625 17.9625 21.4375 18.2375C21.3125 18.5125 21.25 19.0333 21.25 19.8ZM16 26C15.45 26 14.9792 25.8042 14.5875 25.4125C14.1958 25.0208 14 24.55 14 24V12C14 11.45 14.1958 10.9792 14.5875 10.5875C14.9792 10.1958 15.45 10 16 10H28C28.55 10 29.0208 10.1958 29.4125 10.5875C29.8042 10.9792 30 11.45 30 12V24C30 24.55 29.8042 25.0208 29.4125 25.4125C29.0208 25.8042 28.55 26 28 26H16ZM12 30C11.45 30 10.9792 29.8042 10.5875 29.4125C10.1958 29.0208 10 28.55 10 28V14H12V28H26V30H12Z" fill="#76B900"/>
+                        </svg>
+                    </span>
                     <h3>Atividade Objetiva</h3>
                 </div>
                 <p>It is a long established fact that a reader will be distracted by the readable content of a page.</p>
@@ -211,27 +232,63 @@
             </div>
         </section>
 
-        <section class="faq container">
-            <h2>Perguntas Frequentes</h2>
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-header">O que é a plataforma EdTech? <span>+</span></button>
-                    <div class="accordion-content">
-                        <p>É uma solução completa para gestão e entrega de conteúdo educacional digital.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-header">Como funcionam as atividades? <span>+</span></button>
-                    <div class="accordion-content">
-                        <p>As atividades são interativas e salvam seu progresso automaticamente na sessão.</p>
-                    </div>
+        <section class="faq-stage" aria-labelledby="faq-stage-title">
+            <div class="container faq-stage-container">
+                <h2 id="faq-stage-title">Perguntas frequentes</h2>
+                <p class="faq-stage-subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+                <div class="faq-accordion" aria-label="Perguntas frequentes">
+                    <article class="faq-item is-open">
+                        <button class="faq-question" type="button" aria-expanded="true">
+                            <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                            <span class="faq-icon" aria-hidden="true">&#710;</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                            <span class="faq-icon" aria-hidden="true">&#709;</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                            <span class="faq-icon" aria-hidden="true">&#709;</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                            <span class="faq-icon" aria-hidden="true">&#709;</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
     </main>
 <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 dot.lib - Teste de Frontend</p>
+        <div class="container footer-container">
+            <div class="footer-brand" aria-label="DOT Digital Group">
+                <span class="footer-brand-main">dot</span>
+                <span class="footer-brand-dot">.</span>
+                <span class="footer-brand-sub">DIGITAL<br>GROUP</span>
+            </div>
+            <p class="footer-copy">&copy; 2026 DOT Digital Group. Todos os direitos reservados.</p>
         </div>
     </footer>
     <script src="./script.js"></script>

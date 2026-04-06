@@ -6,6 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const audioTime = document.getElementById('audio-time');
     const audioVolume = document.getElementById('audio-volume');
     const audioMuteBtn = document.getElementById('audio-mute');
+    const audioMuteIcon = document.getElementById('audio-mute-icon');
+
+    const volumeOnIcon = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M3 9V15H7L12 20V4L7 9H3Z" fill="currentColor"></path><path d="M15 9.2C16.4 10.2 17.2 11.9 17.2 13.6C17.2 15.3 16.4 17 15 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>';
+    const volumeOffIcon = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M3 9V15H7L12 20V4L7 9H3Z" fill="currentColor"></path><path d="M15.5 10L20 14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><path d="M20 10L15.5 14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>';
+
+    function updateMuteIcon(isMuted) {
+        if (!audioMuteIcon) {
+            return;
+        }
+
+        audioMuteIcon.innerHTML = isMuted ? volumeOffIcon : volumeOnIcon;
+    }
 
     function formatAudioTime(seconds) {
         if (!Number.isFinite(seconds)) {
@@ -72,13 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
             audio.muted = volumeLevel === 0;
             setRangeFill(audioVolume, audioVolume.value, audioVolume.max);
             audioMuteBtn.setAttribute('aria-label', audio.muted ? 'Ativar áudio' : 'Silenciar áudio');
-            audioMuteBtn.querySelector('span').innerHTML = audio.muted ? '&#128263;' : '&#128266;';
+            updateMuteIcon(audio.muted);
         });
 
         audioMuteBtn.addEventListener('click', () => {
             audio.muted = !audio.muted;
             audioMuteBtn.setAttribute('aria-label', audio.muted ? 'Ativar áudio' : 'Silenciar áudio');
-            audioMuteBtn.querySelector('span').innerHTML = audio.muted ? '&#128263;' : '&#128266;';
+            updateMuteIcon(audio.muted);
 
             if (!audio.muted && Number(audioVolume.value) === 0) {
                 audioVolume.value = '70';
@@ -91,6 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setRangeFill(audioVolume, audioVolume.value, audioVolume.max);
         });
+
+        updateMuteIcon(audio.muted);
     }
 
     // --- Slider ---
@@ -147,16 +161,44 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlider();
     }
 
-    // --- Accordion ---
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const item = header.parentElement;
-            item.classList.toggle('active');
-            const icon = header.querySelector('span');
-            icon.textContent = item.classList.contains('active') ? '-' : '+';
+    // --- FAQ Accordion ---
+    const faqItems = document.querySelectorAll('.faq-item');
+    const faqButtons = document.querySelectorAll('.faq-question');
+
+    function closeFaqItem(item) {
+        const button = item.querySelector('.faq-question');
+        const icon = item.querySelector('.faq-icon');
+        item.classList.remove('is-open');
+        button?.setAttribute('aria-expanded', 'false');
+        if (icon) {
+            icon.innerHTML = '&#709;';
+        }
+    }
+
+    function openFaqItem(item) {
+        const button = item.querySelector('.faq-question');
+        const icon = item.querySelector('.faq-icon');
+        item.classList.add('is-open');
+        button?.setAttribute('aria-expanded', 'true');
+        if (icon) {
+            icon.innerHTML = '&#710;';
+        }
+    }
+
+    if (faqButtons.length > 0) {
+        faqButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.faq-item');
+                const isOpen = item?.classList.contains('is-open');
+
+                faqItems.forEach(closeFaqItem);
+
+                if (!isOpen && item) {
+                    openFaqItem(item);
+                }
+            });
         });
-    });
+    }
 
     // --- Atividade Discursiva ---
     const discursiveTextarea = document.getElementById('discursive-response');
