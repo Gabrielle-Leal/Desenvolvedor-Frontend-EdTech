@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdTech - Teste de Frontend</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">dot<span>.lib</span></div>
+        </div>
+    </header>
+
+     <main>
+        <section class="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1>Lorem ipsum dolor, sit amet</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <button class="btn btn-primary">Começar agora</button>
+                </div>
+                <div class="hero-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Dashboard Preview" id="hero-img">
+                </div>
+            </div>
+        </section>
+
+        <section class="video-section container">
+            <h2>Assista ao Vídeo</h2>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section class="slider-section container">
+            <h2>Galeria de Imagens</h2>
+            <div class="slider">
+                <div class="slider-wrapper" id="slider-wrapper">
+                    <div class="slide"><img src="./assets/images/1.jpg" alt="Slide 1"></div>
+                    <div class="slide"><img src="./assets/images/2.jpg" alt="Slide 2"></div>
+                    <div class="slide"><img src="./assets/images/3.jpg" alt="Slide 3"></div>
+                </div>
+                <button class="slider-btn prev" id="prevBtn">&lt;</button>
+                <button class="slider-btn next" id="nextBtn">&gt;</button>
+            </div>
+        </section>
+
+        <section class="audio-section container">
+            <h2>Player de Áudio</h2>
+            <div class="audio-player">
+                <audio controls id="audio-player">
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    Seu navegador não suporta o elemento de áudio.
+                </audio>
+            </div>
+        </section>
+
+        <section class="activities container">
+            <div class="activity-card" id="activity-discursive">
+                <h3>Atividade Discursiva</h3>
+                <p>Escreva sua resposta sobre o tema abordado:</p>
+                <textarea id="discursive-response" placeholder="Digite sua resposta aqui..."></textarea>
+                <div class="activity-actions">
+                    <button id="btn-respond-discursive" class="btn btn-primary">Responder</button>
+                    <button id="btn-edit-discursive" class="btn btn-secondary" disabled>Alterar</button>
+                </div>
+                <div id="feedback-discursive" class="feedback hidden">Resposta enviada com sucesso!</div>
+            </div>
+
+            <div class="activity-card" id="activity-objective">
+                <h3>Atividade Objetiva</h3>
+                <p>Qual a principal vantagem da tecnologia na educação?</p>
+                <div class="options">
+                    <label class="option-item">
+                        <input type="checkbox" name="objective" value="1">
+                        <span>Acesso rápido à informação</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" name="objective" value="2">
+                        <span>Personalização do ensino</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" name="objective" value="3">
+                        <span>Engajamento dos alunos</span>
+                    </label>
+                </div>
+                <div class="activity-actions">
+                    <button id="btn-respond-objective" class="btn btn-primary" disabled>Responder</button>
+                    <button id="btn-edit-objective" class="btn btn-secondary" disabled>Alterar</button>
+                </div>
+                <div id="feedback-objective" class="feedback hidden">Opção salva com sucesso!</div>
+            </div>
+        </section>
+
+        <section class="faq container">
+            <h2>Perguntas Frequentes</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">O que é a plataforma EdTech? <span>+</span></button>
+                    <div class="accordion-content">
+                        <p>É uma solução completa para gestão e entrega de conteúdo educacional digital.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Como funcionam as atividades? <span>+</span></button>
+                    <div class="accordion-content">
+                        <p>As atividades são interativas e salvam seu progresso automaticamente na sessão.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+<footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 dot.lib - Teste de Frontend</p>
+        </div>
+    </footer>
+</body>
+</html>
